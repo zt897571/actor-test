@@ -6,8 +6,6 @@
 // -------------------------------------------
 package iface
 
-import "fmt"
-
 var G = &Singleton{}
 
 type Singleton struct {
@@ -22,7 +20,6 @@ func RegisterActor(actorType ActorType, newActor func() IActor) {
 }
 
 func GetActorByType(actorType ActorType) IActor {
-	fmt.Printf("new actorType = %d \n", actorType)
 	if newActor, ok := actorMap[actorType]; ok {
 		return newActor()
 	}

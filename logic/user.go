@@ -8,24 +8,23 @@ package main
 
 import (
 	"fmt"
+	"ztActor/data"
 	"ztActor/iface"
-	"ztActor/logic_data"
 )
 
 var _ iface.IActor = (*User)(nil)
 
 func init() {
-	fmt.Printf("plugin function\n")
 	iface.RegisterActor(iface.User, newUser)
 }
 
 type User struct {
 	iface.IProcess
-	*logic_data.UserData
+	*data.UserData
 }
 
 func newUser() iface.IActor {
-	return &User{UserData: &logic_data.UserData{}}
+	return &User{UserData: &data.UserData{}}
 }
 
 func (u *User) SetProcess(process iface.IProcess) {
@@ -36,8 +35,8 @@ func (u *User) GetData() any {
 	return u.UserData
 }
 
-func (u *User) SetData(data any) {
-	u.UserData = data.(*logic_data.UserData)
+func (u *User) SetData(uData any) {
+	u.UserData = uData.(*data.UserData)
 }
 
 func (u *User) Init(params ...interface{}) error {
