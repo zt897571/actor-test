@@ -13,19 +13,12 @@ type Singleton struct {
 	PluginMgr  IPluginMgr
 }
 
-var actorMap = make(map[ActorType]func() IActor)
-
-func RegisterActor(actorType ActorType, newActor func() IActor) {
-	actorMap[actorType] = newActor
-}
-
-func GetActorByType(actorType ActorType) IActor {
-	if newActor, ok := actorMap[actorType]; ok {
-		return newActor()
-	}
-	return nil
-}
-
 func LoadPlugin(pluginName string) error {
-	return G.PluginMgr.LoadPlugin(pluginName)
+	err := G.PluginMgr.LoadPlugin(pluginName)
+	G.ProcessMgr.OnReload()
+	return err
+}
+
+func RegisterActor(actorType ActorType, newActorFunc func() IActor) {
+	G.ProcessMgr.RegisterActor(actorType, newActorFunc)
 }

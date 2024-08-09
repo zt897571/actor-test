@@ -8,10 +8,8 @@ main.go 函数中已经有了基础示例
 
 测试步骤：
 1. 调用make build会生成test 和plugin.0.so两个文件
-2. ./test 进入命令行, 输入call 会执行actor call 操作
-3. 修改 user.go 中的handle call 返回值例如12312312, 执行make version=123 buildPlugin生成 plugin.123.so
-4. 控制台输入reload 123, 重新加载插件
-5. 继续调用call 会发现actor call的返回值已经变成了12312312
+2. 修改 user.go 中的handle call 返回值例如12312312, 执行make version=123 buildPlugin生成 plugin.123.so
+3. 执行main函数会显示热更前和热更后的结果
 
 
 ## 说明

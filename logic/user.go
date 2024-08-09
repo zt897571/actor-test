@@ -15,6 +15,7 @@ import (
 var _ iface.IActor = (*User)(nil)
 
 func init() {
+	fmt.Printf("plugin init\n")
 	iface.RegisterActor(iface.User, newUser)
 }
 
@@ -49,9 +50,7 @@ func (u *User) OnStop(reason string) error {
 }
 
 func (u *User) HandleCall(sourcePid iface.IPid, msg any) (any, error) {
-	//u.age = msg
-	fmt.Printf("test = %d\n", 3333)
-	return 33333, nil
+	return 3333, nil
 }
 
 func (u *User) HandleCast(sourcePid iface.IPid, msg any) error {

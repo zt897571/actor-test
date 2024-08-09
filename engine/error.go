@@ -17,6 +17,5 @@ var ErrUnknown = errors.New("unknown error")
 var ErrActorNotFound = errors.New("error actor not found")
 
 // plugin
-var ErrPluginAlreadyLoaded = errors.New("plugin already loaded")
 var ErrPluginNameFormatError = errors.New("plugin name format error")
 var ErrPluginVersionIsSmaller = errors.New("plugin version is Smaller")

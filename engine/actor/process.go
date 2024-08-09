@@ -142,14 +142,14 @@ func (p *process) handleMsg(msg *ProcessMsg) error {
 		castMsg := msg.param.(*castMsg)
 		return p.HandleCast(castMsg.source, castMsg.msg)
 	case ReloadMsg:
-		actor := iface.GetActorByType(p.GetActorType())
+		actor := getMgr().CreateActor(p.GetActorType())
 		if actor == nil {
-			return engine.ErrUnknown
+			return engine.ErrActorNotFound
 		}
 		data := p.IActor.GetData()
 		actor.SetData(data)
 		p.IActor = actor
-		fmt.Println("reload actor succ")
+		fmt.Println("reload succ")
 		return nil
 	}
 	return nil

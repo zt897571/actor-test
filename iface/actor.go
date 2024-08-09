@@ -14,6 +14,8 @@ type ActorType int
 
 type IProcessMgr interface {
 	OnReload()
+	RegisterActor(actorType ActorType, newActor func() IActor)
+	CreateActor(actorType ActorType) IActor
 }
 
 type IProcess interface {

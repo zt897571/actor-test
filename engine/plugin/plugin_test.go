@@ -13,7 +13,8 @@ import (
 
 func TestPluginName(t *testing.T) {
 	convey.Convey("test plugin Name", t, func() {
-		version, err := GetPluginVersion("plugin.1232.so")
+		name, version, err := GetPluginVersion("logic/plugin.1232.so")
+		convey.So(name, convey.ShouldEqual, "plugin.1232.so")
 		convey.So(err, convey.ShouldEqual, nil)
 		convey.So(version, convey.ShouldEqual, 1232)
 	})

@@ -1,4 +1,4 @@
-// Package logic_data -----------------------------
+// Package data -----------------------------
 // @file      : user_data.go
 // @author    : zhangtuo
 // @contact   :
