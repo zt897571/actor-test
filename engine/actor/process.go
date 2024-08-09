@@ -180,8 +180,8 @@ func Cast(targetPid iface.IPid, req any) error {
 }
 
 func internalCast(sourcePid, targetPid iface.IPid, msg any) error {
-	castMsg := &castMsg{source: sourcePid, target: targetPid, msg: msg}
-	return routeMsg(targetPid, &ProcessMsg{msgType: CastMsg, param: castMsg})
+	cMsg := &castMsg{source: sourcePid, target: targetPid, msg: msg}
+	return routeMsg(targetPid, &ProcessMsg{msgType: CastMsg, param: cMsg})
 }
 
 func internalCall(sourcePid, targetPid iface.IPid, msg any, timeout time.Duration) (any, error) {
